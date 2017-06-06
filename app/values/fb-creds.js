@@ -1,6 +1,6 @@
 "use strict";
 
-app.constant("FIREBASE_CONFIG", {
+app.constant("FBCreds", {
     apiKey: "AIzaSyDhUHGcVCfI0cIK3wtTV1yh2me2Ol4WOPk",
     authDomain: "pinterrupted-4e295.firebaseapp.com",
     databaseURL: "https://pinterrupted-4e295.firebaseio.com",

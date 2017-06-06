@@ -1,4 +1,10 @@
-# modern-frameworks-group-pinterest
+# SETUP
+
+1. Fork into your own repo and clone to your machine. 
+2. Rename 'fb-creds-example.js' to 'fb-creds.js' and input info from your own firebase project. 
+3. Run `npm install` inside the /lib folder
+4. Run local server
+5. Become a white girl 
 
 # Using your mad Angular skillz
 
