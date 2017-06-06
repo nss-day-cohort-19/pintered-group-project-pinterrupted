@@ -1,4 +1,14 @@
 .nav-color {
   background-color: red; }
 
+.button-background-color {
+  background-color: lightgrey;
+  border-radius: 20px; }
+
+.user-name {
+  padding: 1em; }
+
+.mini-nav-buttons {
+  margin-left: 20%; }
+
 /*# sourceMappingURL=styles.css.map */
