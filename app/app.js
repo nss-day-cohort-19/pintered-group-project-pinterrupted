@@ -12,6 +12,10 @@ app.config(function($routeProvider){
         templateUrl: 'partials/auth.html',
         controller: 'AuthCtrl'
     })
+    .when('/explore', {
+        templateUrl: 'partials/explore.html',
+        controller: 'ExploreCtrl'
+    })
     .otherwise('/');
 });
 
