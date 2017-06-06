@@ -36,6 +36,18 @@ const getUserPins = function(userId){
     });
 };
 
+const getSinglePin = function(pinId){
+    return $q((resolve, reject)=>{
+        $http.get(`${FBCreds.databaseURL}/pins/${pinId}.json`)
+        .then((singlePinObj)=>{
+            resolve(singlePinObj.data);
+        })
+        .catch((error)=>{
+            reject(error);
+        });
+    });
+};
+
 const addPin = function(newPin){
     return $q((resolve, reject)=>{
         $http.post(`${FBCreds.databaseURL}/pins.json`, newPin)
@@ -49,19 +61,32 @@ const addPin = function(newPin){
     });
 };
 
-
-
-
-
+const deletePin = function(pinId){
+    return $q((resolve, reject)=>{
+        $http.delete(`${FBCreds.databaseURL}/pins/${pinId}.json`)
+        .then((firebaseResponse)=>{
+            resolve(firebaseResponse);
+        })
+        .catch((error)=>{
+            reject(error);
+        });
+    });
+};
 
 
 
 const getAllBoards = function(){
+    let boards = [];
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/boards.json`)
         .then((boardsObj)=>{
-            console.log("All Boards From Firebase", boardsObj.data);
-            resolve(boardsObj.data);
+        let boardsCollection = boardsObj.data;
+          console.log("boardsCollection from firebase", boardsCollection);
+          Object.keys(boardsCollection).forEach((key)=>{
+            boardsCollection[key].id = key;
+            boards.push(boardsCollection[key]);
+            });
+        resolve(boards);
         })
         .catch((error)=>{
             reject(error);
@@ -95,15 +120,30 @@ const addBoard = function(newBoard){
     });
 };
 
+const deleteBoard = function(boardId){
+    return $q((resolve, reject)=>{
+        $http.delete(`${FBCreds.databaseURL}/boards/${boardId}.json`)
+        .then((firebaseResponse)=>{
+            resolve(firebaseResponse);
+        })
+        .catch((error)=>{
+            reject(error);
+        });
+    });
+};
+
 
 
 return{
     getAllPins,
-    getAllBoards,
     getUserPins,
-    getUserBoards,
+    getSinglePin,
     addPin,
-    addBoard
+    deletePin,
+    getAllBoards,
+    getUserBoards,
+    addBoard,
+    deleteBoard
 };
 
 });
