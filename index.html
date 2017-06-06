@@ -2,26 +2,30 @@
 <html>
 <head>
     <title>Angular Test Setup</title>
-    <link rel="stylesheet" type="text/css" href="lib/node_modules/materialize-css/dist/css/materialize.css">
+    <!-- <link rel="stylesheet" type="text/css" href="lib/node_modules/materialize-css/dist/css/materialize.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body ng-app="Pinterrupted">
+    <div ng-include="'partials/navbar.html'">
+
+    </div>
     <div ng-view></div>
 
 
 
 
-
-<!-- MATERIALIZE -->
-<script src="lib/node_modules/jquery/dist/jquery.js"></script>
-<script src="lib/node_modules/materialize-css/dist/js/materialize.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <!-- ANGULAR -->
 <script src="lib/node_modules/angular/angular.js"></script>
 <script src="lib/node_modules/angular-route/angular-route.js"></script>
+
+<!-- MATERIALIZE -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+
 
 <!-- FIREBASE -->
 <script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
@@ -38,8 +42,8 @@
 <script src="app/factories/FilterFactory.js"></script>
 
 <!-- CONTROLLERS -->
-<!-- <script src="app/controllers/AuthCtrl.js"></script>
-<script src="app/controllers/BoardDetailCtrl.js"></script> -->
+<script src="app/controllers/AuthCtrl.js"></script>
+<!-- <script src="app/controllers/BoardDetailCtrl.js"></script> -->
 <script src="app/controllers/ExploreCtrl.js"></script>
 <!-- <script src="app/controllers/ProfileBoardCtrl.js"></script>
 <script src="app/controllers/ProfilePinCtrl.js"></script>

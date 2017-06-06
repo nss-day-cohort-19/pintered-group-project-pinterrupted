@@ -3,12 +3,16 @@
 console.log("HOWDY");
 
 
-const app = angular.module("Pinterrupted", ["ngRoute"]);
+const app = angular.module("Pinterrupted", ["ngRoute", "ui.materialize"]);
 
 
 app.config(function($routeProvider){
     $routeProvider
     .when('/', {
+        templateUrl: 'partials/auth.html',
+        controller: 'AuthCtrl'
+    })
+    .when('/explore', {
         templateUrl: 'partials/explore.html',
         controller: 'ExploreCtrl'
     })
@@ -26,5 +30,3 @@ app.run(($location, FBCreds) =>{
     firebase.initializeApp(AuthConfig);
 
 });
-
-
