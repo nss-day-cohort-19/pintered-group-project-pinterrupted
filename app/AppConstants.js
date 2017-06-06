@@ -7,4 +7,4 @@ app.constant("FIREBASE_CONFIG", {
     projectId: "watt-13633",
     storageBucket: "watt-13633.appspot.com",
     messagingSenderId: "406107825833"
-})
+});

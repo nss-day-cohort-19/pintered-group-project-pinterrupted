@@ -1,5 +1,8 @@
 "use strict";
 
-var app = angular.module("Pinterrupted", ["ngRoute"]);
+console.log("HOWDY");
+
+
+const app = angular.module("Pinterrupted", ["ngRoute"]);
 
 
