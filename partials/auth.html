@@ -1,5 +1,22 @@
-<div>
-    <input type="email" placeholder="Email address" ng-model="auth.email"  autofocus>
-    <input type="password" placeholder="Password" ng-model="auth.password">
-    <button ng-click="registerUser(auth)">Register</button>
+<div class="container center">
+  <div>
+    <section>
+      <h4>Welcome To Pinterest</h4>
+      <div>
+        <input type="email" autofocus="true" placeholder="Email">
+      </div>
+      <div>
+        <input type="password" placeholder="Password">
+      </div>
+      <div>
+        <button class="btn waves-effect waves-light red">Login</button>
+        <p>OR</p>
+        <!-- <a class="waves-effect waves-light btn blue" href="#registerModal">Register</a> -->
+        <!-- <button data-target="registerModal" class="btn">Register</button> -->
+          <md-button class="btn waves-effect waves-light blue">
+      Register
+          </md-button>
+      </div>
+    </section>
+  </div>
 </div>
