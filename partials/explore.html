@@ -7,7 +7,7 @@
         <div class="card-image">
           <img src="{{pins.url}}">
           <span class="card-title">{{pins.title}}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">playlist_add</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addBoardModal' modal>playlist_add</i></a>
         </div>
         <div class="card-content">
           <p>{{pins.description}}</p>
@@ -16,19 +16,29 @@
     </div>
   </div>
 
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-
+  <!-- Modal Trigger -->
+<!--   <div class="col">
+      <a class='btn' data-target='demoModal' modal>Show Modal</a>
+  </div> -->
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+  <div id="addBoardModal" class="modal">
+      <div class="modal-content">
+          <h4>Choose Board</h4>
+          <!-- Dropdown menu of user's current boards -->
+          <p><input type="text" ng-model="">Create Board:</input></p>
+          <!-- Dropdown Trigger -->
+          <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">Choose Existing Board</a>
+
+          <!-- Dropdown Structure -->
+          <ul id='demoDropdown' class='dropdown-content'>
+             <!--  <div ng-repeat=""> -->
+              <li><a>Board 1</a></li>
+              <li><a>Board 2</a></li>
+              <li><a>Board 3</a></li>
+          </ul>
+      </div>
+      <div class="modal-footer">
+          <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+          <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+      </div>
   </div>
-
-<!-- Modals -->
-
