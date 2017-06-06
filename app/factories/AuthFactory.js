@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
+app.factory("AuthFactory", function($q, $http, $rootScope, FBCreds) {
   let currentUserData = null;
 
 //Firebase: Determine if user is authenticated.
