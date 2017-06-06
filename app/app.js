@@ -16,6 +16,10 @@ app.config(function($routeProvider){
         templateUrl: 'partials/explore.html',
         controller: 'ExploreCtrl'
     })
+    .when("/boards", {
+        templateUrl: "partials/board-detail.html",
+        controller: "BoardDetailCtrl"
+    })
     .otherwise('/');
 });
 
