@@ -12,6 +12,10 @@ app.config(function($routeProvider){
         templateUrl: '',
         controller: ''
     })
+    .when('/', {
+        templateUrl: '',
+        controller: '',
+    })
 
     .otherwise('/');
 });
