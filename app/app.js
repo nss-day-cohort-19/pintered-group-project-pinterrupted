@@ -9,14 +9,9 @@ const app = angular.module("Pinterrupted", ["ngRoute"]);
 app.config(function($routeProvider){
     $routeProvider
     .when('/', {
-        templateUrl: '',
-        controller: ''
+        templateUrl: 'partials/explore.html',
+        controller: 'ExploreCtrl'
     })
-    .when('/', {
-        templateUrl: '',
-        controller: '',
-    })
-
     .otherwise('/');
 });
 

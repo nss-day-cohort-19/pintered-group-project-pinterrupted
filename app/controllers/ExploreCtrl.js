@@ -1,6 +1,10 @@
 "use strict";
 
-getPins()
-getBoard()
-addBoard()
-addPin()
+app.controller('ExploreCtrl', function() {
+
+// getPins()
+// getBoard()
+// addBoard()
+// addPin()
+
+});
