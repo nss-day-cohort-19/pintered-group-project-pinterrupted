@@ -1,0 +1,22 @@
+{
+    "user": {
+        "uid": 1234,
+        "name": "Chaz"
+    },
+    "pins":{
+        "pin_1": {
+        "uid": 1234,
+        "board_id": 9999,
+        "url": "images/puppy.jpg",
+        "title": "Puppy",
+        "description": "SUPER CUTE PUPPY"
+        },
+        "pin_2": {
+        "uid": 5678,
+        "board_id": 1111,
+        "url": "images/puppy.jpg",
+        "title": "Puppy",
+        "description": "SUPER CUTE PUPPY"
+        }
+    }
+}

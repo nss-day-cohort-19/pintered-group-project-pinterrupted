@@ -1,6 +1,6 @@
 "use strict";
 
-getPins()
-getBoard()
-addBoard()
-addPin()
+// getPins()
+// getBoard()
+// addBoard()
+// addPin()
