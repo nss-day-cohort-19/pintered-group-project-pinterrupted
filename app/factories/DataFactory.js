@@ -5,11 +5,17 @@ app.factory("DataFactory", function($q, $http, FBCreds){
 
 
 const getAllPins = function(){
+    let pins = [];
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/pins.json`)
         .then((pinsObj)=>{
-            console.log("All Pins From Firebase", pinsObj.data);
-            resolve(pinsObj.data);
+        let pinsCollection = pinsObj.data;
+          console.log("pinsCollection from firebase", pinsCollection);
+          Object.keys(pinsCollection).forEach((key)=>{
+            pinsCollection[key].id = key;
+            pins.push(pinsCollection[key]);
+            });
+        resolve(pins);
         })
         .catch((error)=>{
             reject(error);
