@@ -7,9 +7,11 @@ app.controller('ExploreCtrl', function(DataFactory, $scope) {
             console.log("allPins", allPins);
             $scope.allPins = allPins;
         });
+
 // getPins()
 // getBoard()
 // addBoard()
 // addPin()
+
 
 });
