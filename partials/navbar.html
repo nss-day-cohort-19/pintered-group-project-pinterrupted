@@ -1,9 +1,9 @@
-<nav class="nav-color">
+<nav ng-controller="NavCtrl" class="nav-color">
     <div class="row nav-wrapper">
 
         <a class="col s12 m3 l2 left"><img class="pinterest-logo" src="../images/pinterest.png"></a>
         <i class="material-icons col s12 m1 l1">search</i>
-        <input type="text" class="input-nav col s12 m4 l4" placeholder="Search">
+        <input type="text" class="input-nav col s12 m4 l4" ng-model="searchText.search" placeholder="Search">
             <ul>
                 <li class="col s12 m1 l1 right"><a ng-href="#!/">Logout</a></li>
                 <li class="col s12 m1 l1 right"><a ng-href="#!/boards">Profile</a></li>

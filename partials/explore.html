@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="col xs m4" ng-repeat="pins in allPins">
+    <div class="col xs m4" ng-repeat="pins in allPins | filter: searchText.search">
       <div class="card">
         <div class="card-image">
           <img src="{{pins.url}}">
@@ -88,4 +88,3 @@
       <a href="#!/explore" class="btn waves-effect red" ng-click="addNewPin()">Add Pin</a>
     </div>
   </div>
-
