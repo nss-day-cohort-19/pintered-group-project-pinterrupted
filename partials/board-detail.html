@@ -28,13 +28,13 @@
     </div>
 
 
-    <!-- Creates new board cards from Firebase data call-->
+    <!-- Displays board cards from Firebase data call-->
     <div class="col xs m4" ng-repeat="board in boardArray">
         <div class="card">
             <div class="card-image">
                 <img src="../images/sample-1.jpg">
                 <span class="card-title"></span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="add--{{board.id}}" modal><i class="material-icons">playlist_add</i></a>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="add--{{board.id}}" modal><i class="material-icons">delete</i></a>
             </div>
             <div class="card-content">
                 <p>{{board.title}}</p>
