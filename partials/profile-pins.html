@@ -24,7 +24,7 @@
         <div class="card-image">
           <img src="{{pins.url}}">
           <span class="card-title">{{pins.title}}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='pin--{{pin.board_id}}' modal>delete</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='pin--{{pins.id}}' modal>delete</i></a>
         </div>
         <div class="card-content">
           <p>{{pins.description}}</p>
@@ -32,13 +32,13 @@
       </div>
 
 
-                      <!--Delete Current Board Modal-->
-        <div id="pin--{{pin.board_id}}" class="modal">
+                      <!--Delete Current Pin Modal-->
+        <div id="pin--{{pins.id}}" class="modal">
             <div class="modal-content">
                 <h4>Delete This Pin?</h4>
             </div>
             <div class="modal-footer">
-                <a href="#!/userPins" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentBoard(pins.id)">Delete</a>
+                <a href="#!/userPins" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentPin(pins.id)">Delete</a>
                 <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
             </div>
         </div>
