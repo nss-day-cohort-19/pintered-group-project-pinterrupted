@@ -15,20 +15,31 @@
       </div>
     </div>
   </div>
-
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
 <!-- Modals -->
 
+  <!-- Add Pin Modal Trigger -->
+  <a class="waves-effect waves-light btn" data-target='addPin' modal>Modal</a>
+
+  <!-- Add Pin Modal Structure -->
+  <div id="addPin" class="modal">
+    <div class="modal-content">
+      <h4>Add a Pin</h4>
+      <input type="text" placeholder="Link">
+      <input type="text" placeholder="Title">
+      <input type="text" placeholder="Describe this pin">
+      <div class="center">
+        <div input-field>
+              <select class="browser-default" material-select watch>
+                  <option ng-repeat="board in boardsArray">Title 1</option>
+                  <option ng-repeat="board in boardsArray">Title 2</option>
+              </select>
+      </div>
+        <p>OR</p>
+      <input type="text" placeholder="Create New Board">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a class="btn waves-effect red">Add Pin</a>
+    </div>
+  </div>
