@@ -5,15 +5,12 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
 
     let user = AuthFactory.getUser();
     $scope.name = AuthFactory.getUser();
-    console.log("looking for current user", $scope.name);
-    // should return UID to pass into both function on the page
-    // ng-included
-
-//        DataFactory.getUserName($scope.name);
 
 
-//    $scope.userName = DataFactory.getUserName($scope.name);
-//    console.log("This is users obj", $scope.userName);
+//    console.log("test name", DataFactory.getUserName($scope.name));
+    let firstNameUser = DataFactory.getUserName($scope.name);
+
+console.log("testing name on Board Control", firstNameUser);
 
 
     $scope.newBoardObject = {};

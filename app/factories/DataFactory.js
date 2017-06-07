@@ -163,6 +163,7 @@ const getUserName = function(userUID) {
     return $q ((resolve, reject) => {
         $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userUID}"`)
         .then((userName) => {
+            console.log("What is user name", userName);
             for (let names in userName.data) {
                console.log("user name", userName.data[names].firstName);
                 currentUserName = userName.data[names].firstName;

@@ -6,3 +6,37 @@
 <!-- MODAL -->
 
 <!-- clickable image with delete button-->
+<div ng-include="'partials/mininav.html'"></div>
+
+  <div class="row">
+
+    <div class="col xs m4" ng-repeat="pins in pinArray">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{pins.url}}">
+          <span class="card-title">{{pins.title}}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='pin--{{pin.board_id}}' modal>delete</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{pins.description}}</p>
+        </div>
+      </div>
+
+
+                      <!--Delete Current Board Modal-->
+        <div id="pin--{{pin.board_id}}" class="modal">
+            <div class="modal-content">
+                <h4>Delete This Pin?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#!/userPins" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentBoard(pins.id)">Delete</a>
+                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+  </div>

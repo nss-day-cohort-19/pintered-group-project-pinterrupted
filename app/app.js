@@ -39,6 +39,11 @@ app.config(function($routeProvider){
         templateUrl: "partials/profile-boards.html",
         controller: "ProfileBoardsCtrl"
     })
+    .when("/userPins" ,{
+        templateUrl: "partials/profile-pins.html",
+        controller: "ProfilePinCtrl",
+        resolve: {isAuth}
+    })
     .otherwise('/');
 });
 
