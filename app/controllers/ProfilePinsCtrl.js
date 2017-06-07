@@ -30,7 +30,7 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
         .then( (addedPin) => {
             console.log("addedPin", addedPin);
             $scope.addedPin = addedPin;
-            $("#addPinModal").modal('close');
+            $("#addProPinModal").modal('close');
             $route.reload();
         });
     };
