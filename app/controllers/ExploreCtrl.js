@@ -1,7 +1,7 @@
 "use strict";
 
-app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route) {
-
+app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route, SearchTermData) {
+    $scope.searchText = SearchTermData;
     let user = AuthFactory.getUser();
 
     $scope.getPins = () => {
