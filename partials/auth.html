@@ -2,13 +2,13 @@
     <section>
       <h4>Welcome To Pinterest</h4>
       <div>
-        <input type="email" autofocus="true" placeholder="Email">
+        <input type="email" autofocus="true" placeholder="Email" ng-model="auth.email">
       </div>
       <div>
-        <input type="password" placeholder="Password">
+        <input type="password" placeholder="Password" ng-model="auth.password">
       </div>
       <div>
-        <button class="btn waves-effect waves-light red">Login</button>
+        <button ng-click="login()" class="btn waves-effect waves-light red">Login</button>
         <p>OR</p>
 
         <div class="col">
@@ -20,11 +20,11 @@
   <div id="registerModal" class="modal">
       <div class="modal-content">
           <h4>Register New User</h4>
-          <input type="text" autofocus="true" placeholder="First Name">
-          <input type="text" autofocus="true" placeholder="Last Name">
-          <input type="email" autofocus="true" placeholder="Email">
-          <input type="password" autofocus="true" placeholder="Password">
-          <button class="btn waves-effect waves-light red">Login</button>
+          <input type="text" autofocus="true" placeholder="First Name" ng-model="auth.firstName">
+          <input type="text" autofocus="true" placeholder="Last Name" ng-model="auth.lastName">
+          <input type="email" autofocus="true" placeholder="Email" ng-model="auth.email">
+          <input type="password" autofocus="true" placeholder="Password" ng-model="auth.password">
+          <button ng-click="registerUser()" class="btn waves-effect waves-light red">Register</button>
       </div>
       <div class="modal-footer">
           <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
