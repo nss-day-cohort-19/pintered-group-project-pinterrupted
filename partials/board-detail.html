@@ -1,36 +1,54 @@
 <!-- filter by user and selected board -->
 <!-- user boards -->
 <!--add a pin button  -->
-<!-- clickable add to board button -->
+ <div ng-include="'partials/mininav.html'"></div>
 
-  <div class="row">
-    <div class="col xs m4" ng-repeat="board in boardArray">
-      <div class="card">
-        <div class="card-image">
-            <img src="../images/sample-1.jpg">
-            <span class="card-title"></span>
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">playlist_add</i></a>
+
+<div class="row" >
+
+<!--        <div class="col xs m4 card small">-->
+<!--            <div class="card-panel">-->
+<!--
+            <span class="card-title">Create New Board</span>
+            <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>
+-->
+<!--            </div>-->
+<!--        </div>-->
+
+    <div class="col xs m4">
+        <div class="card">
+            <div class="card-image">
+                <img src="../images/gray-background.jpg">
+                <span class="card-title"></span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>
+            </div>
+            <div class="card-content">
+                <p>Create</p>
+            </div>
         </div>
-        <div class="card-content">
-          <p>{{board}}</p>
-        </div>
-      </div>
     </div>
-  </div>
-
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+    <div class="col xs m4" ng-repeat="board in boardArray">
+        <div class="card">
+            <div class="card-image">
+                <img src="../images/sample-1.jpg">
+                <span class="card-title"></span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>
+            </div>
+            <div class="card-content">
+                <p>{{board}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="addBoardModal" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>Create New Board</h4>
+      <input type="text" ng-model="addBoard">
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="addNew(addBoard)">Add</a>
+      <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
   </div>
-
-<!-- Modals -->
-

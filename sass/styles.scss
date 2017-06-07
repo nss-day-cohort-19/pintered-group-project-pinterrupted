@@ -15,6 +15,11 @@
     margin-left: 20%;
 }
 
+.mininav-container {
+    margin-bottom: 1em;
+//    background-color: pink;
+}
+
 input[type=email]:focus:not([readonly]) {
   border-bottom: 1px solid red;
   box-shadow: 0 1px 0 0 red;

@@ -6,7 +6,10 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, DataF
     $scope.tempUID = "1234";
     let user = AuthFactory.getUser();
     console.log("Is there a current user?", user);
-
+    
+    $scope.addNew = function (someText) {
+        console.log("what did I get back?", someText);
+    };
 
     let userBoards = function () {
         $scope.boardArray = [];
