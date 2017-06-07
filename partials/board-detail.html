@@ -69,6 +69,28 @@
     </div>
 </div>
 
+  <div id="addPinModal" class="modal">
+    <div class="modal-content">
+      <h4>Add a Pin</h4>
+      <input type="text" placeholder="Image Link">
+      <input type="text" placeholder="Title For Pin">
+      <input type="text" placeholder="Description For This Pin">
+      <h4>Choose An Exisiting Board</h4>
+      <div class="center">
+        <div input-field>
+              <select class="browser-default" material-select watch>
+                  <option ng-repeat="board in boardArray">{{board.title}}</option>
+              </select>
+      </div>
+        <p>OR</p>
+      <input type="text" placeholder="Create New Board">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a class="btn waves-effect red" >Add Pin</a>
+    </div>
+  </div>
 
 
 
