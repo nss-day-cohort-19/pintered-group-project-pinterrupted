@@ -7,7 +7,8 @@
         <div class="card-image">
           <img src="images/grey-background.jpg" class="addPinImg">
           <span class="card-title">Add Pin</span>
-          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addBoardModal' modal>library_add</i></a>
+          <!-- Add Pin Modal Trigger -->
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
         </div>
       </div>
     </div>
@@ -63,11 +64,8 @@
     </div>
 </div> -->
 
-  <!-- Add Pin Modal Trigger -->
-  <a class="waves-effect waves-light btn" data-target='addPin' modal>Modal</a>
-
   <!-- Add Pin Modal Structure -->
-  <div id="addPin" class="modal">
+  <div id="addPinModal" class="modal">
     <div class="modal-content">
       <h4>Add a Pin</h4>
       <input type="text" placeholder="Link">
@@ -76,8 +74,7 @@
       <div class="center">
         <div input-field>
               <select class="browser-default" material-select watch>
-                  <option ng-repeat="board in boardsArray">Title 1</option>
-                  <option ng-repeat="board in boardsArray">Title 2</option>
+                  <option ng-repeat="board in boardArray">{{board.title}}</option>
               </select>
       </div>
         <p>OR</p>
