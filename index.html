@@ -12,17 +12,20 @@
     <div ng-include="'partials/navbar.html'">
 
     </div>
+
     <div class="mainContent" ng-view></div>
 
+<!--    <div ng-controller="BoardDetailCtrl"></div>-->
 
 
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <!-- ANGULAR -->
 <script src="lib/node_modules/angular/angular.js"></script>
 <script src="lib/node_modules/angular-route/angular-route.js"></script>
 
 <!-- MATERIALIZE -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
 
@@ -43,7 +46,7 @@
 
 <!-- CONTROLLERS -->
 <script src="app/controllers/AuthCtrl.js"></script>
-<!-- <script src="app/controllers/BoardDetailCtrl.js"></script> -->
+ <script src="app/controllers/BoardDetailCtrl.js"></script>
 <script src="app/controllers/ExploreCtrl.js"></script>
 <!-- <script src="app/controllers/ProfileBoardCtrl.js"></script>
 <script src="app/controllers/ProfilePinCtrl.js"></script>
