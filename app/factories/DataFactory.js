@@ -36,6 +36,19 @@ const getUserPins = function(userId){
     });
 };
 
+const getBoardPins = function(boardId){
+    return $q((resolve, reject)=>{
+        $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
+        .then((userPinsObj)=>{
+            console.log(`Pins for ${boardId}`, userPinsObj.data);
+            resolve(userPinsObj.data);
+        })
+        .catch((error)=>{
+            reject(error);
+        });
+    });
+};
+
 const getSinglePin = function(pinId){
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/pins/${pinId}.json`)
@@ -174,7 +187,8 @@ return{
     getUserBoards,
     addBoard,
     deleteBoard,
-    getUserName
+    getUserName,
+    getBoardPins
 };
 
 });

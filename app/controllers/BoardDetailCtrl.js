@@ -3,32 +3,11 @@
 
 app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $route, DataFactory, AuthFactory){
 
-    // use for testing, delete once able to pull back current user UID
-    $scope.tempUID = "1234";
-    $scope.testName = "Mr. Peepers";
-//    console.log("testing current user", AuthFactory.currentUserData);
-
-//    let userUidCall = function () {
-//        AuthFactory.getUser()
-//        .then((userUid)=>{
-//            console.log("board ctrl current uid", userUid);
-//        });
-//    };
-
+    let user = AuthFactory.getUser();
     $scope.name = AuthFactory.getUser();
     console.log("looking for current user", $scope.name);
     // should return UID to pass into both function on the page
-    // use scope.name in getUser function so it will display user name in mininav.html that is
     // ng-included
-//    let userUID = function() {
-//        AuthFactory.getUser().
-//        then((data) =>{
-//            console.log("Is there a current user?", data);
-//            $scope.name=data;
-//        });
-//
-//
-//    };
 
 //        DataFactory.getUserName($scope.name);
 
@@ -42,7 +21,7 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
     // pass into function input value from board-detail.html, push to boards collection in firebase and creates new custom key
     $scope.addNew = function (someText) {
         $scope.newBoardObject.title = someText;
-        $scope.newBoardObject.uid = $scope.tempUID;
+        $scope.newBoardObject.uid = user;
         DataFactory.addBoard($scope.newBoardObject)
         .then((newBoardSucces)=>{
             $route.reload();
@@ -65,7 +44,7 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
     // each modal that is created for each card in the ng-repeat
     let userBoards = function () {
         $scope.boardArray = [];
-        DataFactory.getUserBoards($scope.name)
+        DataFactory.getUserBoards(user)
         .then((boardObj)=>{
             Object.keys(boardObj).forEach( (key)=>{
                 boardObj[key].id = key;

@@ -5,6 +5,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="lib/node_modules/materialize-css/dist/css/materialize.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -12,14 +13,13 @@
     <div ng-include="'partials/navbar.html'">
 
     </div>
-    <div ng-view>
 
-    </div>
+    <div class="mainContent" ng-view></div>
+
 <!--    <div ng-controller="BoardDetailCtrl"></div>-->
 
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <!-- ANGULAR -->
 <script src="lib/node_modules/angular/angular.js"></script>
 <script src="lib/node_modules/angular-route/angular-route.js"></script>
@@ -48,11 +48,11 @@
 <script src="app/controllers/AuthCtrl.js"></script>
  <script src="app/controllers/BoardDetailCtrl.js"></script>
 <script src="app/controllers/ExploreCtrl.js"></script>
-<!-- <script src="app/controllers/ProfileBoardCtrl.js"></script>
-<script src="app/controllers/ProfilePinCtrl.js"></script>
+<script src="app/controllers/ProfileBoardCtrl.js"></script>
 <script src="app/controllers/NavCtrl.js"></script>
 <script src="app/controllers/MiniNavCtrl.js"></script>
- -->
+<!-- <script src="app/controllers/ProfilePinCtrl.js"></script> -->
+
 
 
 

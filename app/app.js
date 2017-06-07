@@ -35,6 +35,10 @@ app.config(function($routeProvider){
         controller: "BoardDetailCtrl",
         resolve: {isAuth}
     })
+    .when("/boards/:userId", {
+        templateUrl: "partials/profile-boards.html",
+        controller: "ProfileBoardsCtrl"
+    })
     .otherwise('/');
 });
 

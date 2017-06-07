@@ -2,12 +2,22 @@
 <!-- clickable add to board button -->
 
   <div class="row">
+    <div class="col xs m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/grey-background.jpg" class="addPinImg">
+          <span class="card-title">Add Pin</span>
+          <!-- Add Pin Modal Trigger -->
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
+        </div>
+      </div>
+    </div>
     <div class="col xs m4" ng-repeat="pins in allPins">
       <div class="card">
         <div class="card-image">
           <img src="{{pins.url}}">
           <span class="card-title">{{pins.title}}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">playlist_add</i></a>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addBoardModal' modal>playlist_add</i></a>
         </div>
         <div class="card-content">
           <p>{{pins.description}}</p>
@@ -15,20 +25,64 @@
       </div>
     </div>
   </div>
-
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
 <!-- Modals -->
 
+
+  <div id="addBoardModal" class="modal">
+      <div class="modal-content">
+          <h4>Add To New Board</h4>
+          <label>Title:</label>
+          <p><input type="text" ng-model="addBoard"></p>
+          <h4>Add To Existing Board</h4>
+          <!-- Dropdown menu of user's current boards -->
+          <!-- Dropdown Trigger -->
+         <!--  <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">Choose Existing Board</a> -->
+
+          <!-- Dropdown Structure -->
+          <div input-field>
+            <select class="browser-default" material-select watch>
+              <option ng-repeat="board in boardArray">{{board.title}}</option>
+            </select>
+          </div>
+
+      <div class="modal-footer">
+        <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a href="#!/explore" ng-click="addNew(addBoard)" class="btn waves-effect red">Add Pin</a>
+    </div>
+      </div>
+  </div>
+
+<!--   <div id="addBoardModal" class="modal">
+    <div class="modal-content">
+        <h4>Create New Board</h4>
+        <label>Title:</label>
+        <input type="text" ng-model="addBoard">
+    </div>
+    <div class="modal-footer">
+        <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="addNew(addBoard)">Add</a>
+        <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div> -->
+
+  <!-- Add Pin Modal Structure -->
+  <div id="addPinModal" class="modal">
+    <div class="modal-content">
+      <h4>Add a Pin</h4>
+      <input type="text" placeholder="Link">
+      <input type="text" placeholder="Title">
+      <input type="text" placeholder="Describe this pin">
+      <div class="center">
+        <div input-field>
+              <select class="browser-default" material-select watch>
+                  <option ng-repeat="board in boardArray">{{board.title}}</option>
+              </select>
+      </div>
+        <p>OR</p>
+      <input type="text" placeholder="Create New Board">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a class="btn waves-effect red">Add Pin</a>
+    </div>
+  </div>

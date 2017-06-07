@@ -15,16 +15,14 @@
 
 <!--   card to create new board-->
     <div class="col xs m4">
-        <div class="card">
-            <div class="card-image">
-                <img src="../images/gray-background.jpg">
-                <span class="card-title"></span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>
-            </div>
-            <div class="card-content">
-                <p>Create</p>
-            </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="images/grey-background.jpg" class="addPinImg">
+          <span class="card-title">Add Board</span>
+          <!-- Add Pin Modal Trigger -->
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target="addBoardModal" modal>library_add</i></a>
         </div>
+      </div>
     </div>
 
 
@@ -32,7 +30,7 @@
     <div class="col xs m4" ng-repeat="board in boardArray">
         <div class="card">
             <div class="card-image">
-                <img src="../images/sample-1.jpg">
+                <a ng-href="#!/boards/abcd"><img src="../images/sample-1.jpg"></a>
                 <span class="card-title"></span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="add--{{board.id}}" modal><i class="material-icons">delete</i></a>
             </div>
@@ -70,8 +68,6 @@
         <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
 </div>
-
-
 
 
 
