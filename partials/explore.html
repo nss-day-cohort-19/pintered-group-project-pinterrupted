@@ -68,13 +68,13 @@
   <div id="addPinModal" class="modal">
     <div class="modal-content">
       <h4>Add a Pin</h4>
-      <input type="text" placeholder="Link">
-      <input type="text" placeholder="Title">
-      <input type="text" placeholder="Describe this pin">
-      <h5>Choose Existing Board:</h5>
+      <input type="text" ng-model="newPinObject.url" placeholder="Image Link">
+      <input type="text" ng-model="newPinObject.title" placeholder="Title For Pin">
+      <input type="text" ng-model="newPinObject.description" placeholder="Description For Pin">
+      <h5>Choose Exisiting Board</h5>
       <div>
         <div input-field>
-              <select class="browser-default" material-select watch>
+              <select class="browser-default" material-select watch ng-model="boardArray.id">
                   <option ng-repeat="board in boardArray">{{board.title}}</option>
               </select>
       </div>
@@ -84,7 +84,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-      <a class="btn waves-effect red">Add Pin</a>
+      <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="#!/explore" class="btn waves-effect red" ng-click="addNewPin()">Add Pin</a>
     </div>
   </div>
+

@@ -10,26 +10,48 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
 
     let user = AuthFactory.getUser();
     $scope.name = AuthFactory.getUser();
-    $scope.tempUID = "1234";
-    $scope.tempPinKey = "pin_1";
+
+    $scope.newBoardObject = {};
+    $scope.newPinObject = {
+        url: "",
+        title: "",
+        description: "",
+        uid: user
+    };
+
+    $scope.addNewPin = () => {
+        $scope.boardArray.forEach( (element) => {
+            if (element.title === $scope.boardArray.id) {
+                $scope.newPinObject.board_id = element.id;
+            }
+        });
+        console.log("newPinObject", $scope.newPinObject);
+        DataFactory.addPin($scope.newPinObject)
+        .then( (addedPin) => {
+            console.log("addedPin", addedPin);
+            $scope.addedPin = addedPin;
+            $("#addPinModal").modal('close');
+            $route.reload();
+        });
+    };
 
 
 
 //     delete button calls this function from board-detail.html
     $scope.deleteCurrentBoard = function (pinKey) {
         console.log("delete Pin was clicked");
-//        DataFactory.deletePin($scope.tempPinKey)
-//
-//        .then( (deleteComplete) => {
-//            $route.reload();
-//        });
+       DataFactory.deletePin(pinKey)
+
+       .then( (deleteComplete) => {
+           $route.reload();
+       });
     };
 
 
 
     let userPins = function () {
         $scope.pinArray = [];
-        DataFactory.getUserPins($scope.tempUID)
+        DataFactory.getUserPins(user)
         .then((PinObj)=>{
             console.log("user pins: ", PinObj);
             Object.keys(PinObj).forEach( (key)=>{
