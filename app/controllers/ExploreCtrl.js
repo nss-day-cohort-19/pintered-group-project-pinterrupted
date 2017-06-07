@@ -5,7 +5,6 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
     let user = AuthFactory.getUser();
 
     $scope.newBoardObject = {};
-    $scope.tempUID = "1234";
 
     DataFactory.getAllPins()
         .then( (allPins) => {
@@ -16,9 +15,10 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
         // pass into function input value from board-detail.html, push to boards collection in firebase and creates new custom key
     $scope.addNew = function (someText) {
         $scope.newBoardObject.title = someText;
-        $scope.newBoardObject.uid = $scope.tempUID;
+        $scope.newBoardObject.uid = user;
         DataFactory.addBoard($scope.newBoardObject)
         .then((newBoardSucces)=>{
+            $("#addBoardModal").modal('close');
             $route.reload();
         });
     };
@@ -28,7 +28,7 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
     // each modal that is created for each card in the ng-repeat
     let userBoards = function () {
         $scope.boardArray = [];
-        DataFactory.getUserBoards($scope.tempUID)
+        DataFactory.getUserBoards(user)
         .then((boardObj)=>{
             console.log("boardObj", boardObj);
             Object.keys(boardObj).forEach( (key)=>{
