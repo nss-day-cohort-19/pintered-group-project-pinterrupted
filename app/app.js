@@ -30,6 +30,10 @@ app.config(function($routeProvider){
         controller: 'ExploreCtrl',
         resolve: {isAuth}
     })
+    .when("/boards", {
+        templateUrl: "partials/board-detail.html",
+        controller: "BoardDetailCtrl"
+    })
     .otherwise('/');
 });
 

@@ -1,2 +1,77 @@
-<!-- filter by user and selected board -->
-<!-- user boards -->
+<!--includes mininav.html-->
+<div ng-include="'partials/mininav.html'"></div>
+
+
+<!--begin creating cards-->
+<div class="row" >
+
+<!--        <div class="col xs m4 card small">-->
+<!--            <div class="card-panel">-->
+<!--            <span class="card-title">Create New Board</span>-->
+<!--            <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+<!--   card to create new board-->
+    <div class="col xs m4">
+        <div class="card">
+            <div class="card-image">
+                <img src="../images/gray-background.jpg">
+                <span class="card-title"></span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="addBoardModal" modal><i class="material-icons">playlist_add</i></a>
+            </div>
+            <div class="card-content">
+                <p>Create</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Displays board cards from Firebase data call-->
+    <div class="col xs m4" ng-repeat="board in boardArray">
+        <div class="card">
+            <div class="card-image">
+                <img src="../images/sample-1.jpg">
+                <span class="card-title"></span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="add--{{board.id}}" modal><i class="material-icons">delete</i></a>
+            </div>
+            <div class="card-content">
+                <p>{{board.title}}</p>
+            </div>
+        </div>
+
+                <!--Delete Current Board Modal-->
+        <div id="add--{{board.id}}" class="modal">
+            <div class="modal-content">
+                <h4>Delete This Board?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentBoard(board.id)">Delete</a>
+                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+    <!--end of ng-repeat-->
+    </div>
+
+<!--end card container-->
+</div>
+
+
+  <!-- Create New Board Modal -->
+<div id="addBoardModal" class="modal">
+    <div class="modal-content">
+        <h4>Create New Board</h4>
+        <label>Title:</label>
+        <input type="text" ng-model="addBoard">
+    </div>
+    <div class="modal-footer">
+        <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="addNew(addBoard)">Add</a>
+        <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+
+
+
+

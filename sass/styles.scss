@@ -1,5 +1,23 @@
 .nav-color {
-    background-color: red;
+    background-color: white;
+}
+
+.nav-color i, li a{
+    color: #464646 !important;
+}
+
+
+.pinterest-logo {
+    margin-top: 5px;
+    padding-top: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.input-nav {
+    background: #f1f1f1 !important;
+    border-radius: 10px !important;
+    margin-top: 10px !important;
 }
 
 .button-background-color {
@@ -13,6 +31,11 @@
 
 .mini-nav-buttons {
     margin-left: 20%;
+}
+
+.mininav-container {
+    margin-bottom: 1em;
+//    background-color: pink;
 }
 
 input[type=email]:focus:not([readonly]) {
