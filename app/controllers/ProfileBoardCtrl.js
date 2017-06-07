@@ -14,6 +14,13 @@ let getBoardPins = function(){
     });
 };
 
+let getCurrentBoard = function(){
+    DataFactory.getAllBoards()
+    .then((boards)=>{
+        $scope.boards =
+    })
+}
+
 
 getUser();
 getBoardPins();
