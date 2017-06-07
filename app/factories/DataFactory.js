@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("DataFactory", function($q, $http, FBCreds){
+app.factory("DataFactory", function($q, $http, $window, FBCreds){
 
 
 
@@ -119,6 +119,7 @@ const addBoard = function(newBoard){
         });
     });
 };
+
 
 const deleteBoard = function(boardId){
     return $q((resolve, reject)=>{
