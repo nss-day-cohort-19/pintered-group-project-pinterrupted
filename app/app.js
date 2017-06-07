@@ -5,6 +5,19 @@ console.log("HOWDY");
 
 const app = angular.module("Pinterrupted", ["ngRoute", "ui.materialize"]);
 
+let isAuth = (AuthFactory) =>
+  new Promise ((resolve, reject) => {
+    AuthFactory.isAuthenticated()
+    .then((userExists) => {
+      if (userExists){
+        console.log('Authenicated, go ahead');
+        resolve();
+      } else {
+        console.log('Authenticated reject, GO AWAY');
+        reject();
+      }
+    });
+});
 
 app.config(function($routeProvider){
     $routeProvider
@@ -14,7 +27,8 @@ app.config(function($routeProvider){
     })
     .when('/explore', {
         templateUrl: 'partials/explore.html',
-        controller: 'ExploreCtrl'
+        controller: 'ExploreCtrl',
+        resolve: {isAuth}
     })
     .when("/boards", {
         templateUrl: "partials/board-detail.html",

@@ -120,6 +120,19 @@ const addBoard = function(newBoard){
     });
 };
 
+const addUser = function(newUser){
+   return $q((resolve, reject)=>{
+     console.log("adding new user to our database");
+       $http.post(`${FBCreds.databaseURL}/users.json`, newUser)
+       .then((response)=>{
+           resolve(response);
+       })
+       .catch((error)=>{
+           reject(error);
+       });
+   });
+};
+
 
 const deleteBoard = function(boardId){
     return $q((resolve, reject)=>{
@@ -140,8 +153,8 @@ return{
     getUserPins,
     getSinglePin,
     addPin,
+    addUser,
     deletePin,
-    getAllBoards,
     getUserBoards,
     addBoard,
     deleteBoard
