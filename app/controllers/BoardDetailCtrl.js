@@ -6,12 +6,35 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
     // use for testing, delete once able to pull back current user UID
     $scope.tempUID = "1234";
     $scope.testName = "Mr. Peepers";
+//    console.log("testing current user", AuthFactory.currentUserData);
 
+//    let userUidCall = function () {
+//        AuthFactory.getUser()
+//        .then((userUid)=>{
+//            console.log("board ctrl current uid", userUid);
+//        });
+//    };
+
+    $scope.name = AuthFactory.getUser();
+    console.log("looking for current user", $scope.name);
     // should return UID to pass into both function on the page
     // use scope.name in getUser function so it will display user name in mininav.html that is
     // ng-included
-    let user = AuthFactory.getUser();
-//    console.log("Is there a current user?", user);
+//    let userUID = function() {
+//        AuthFactory.getUser().
+//        then((data) =>{
+//            console.log("Is there a current user?", data);
+//            $scope.name=data;
+//        });
+//
+//
+//    };
+
+//        DataFactory.getUserName($scope.name);
+
+
+//    $scope.userName = DataFactory.getUserName($scope.name);
+//    console.log("This is users obj", $scope.userName);
 
 
     $scope.newBoardObject = {};
@@ -42,7 +65,7 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
     // each modal that is created for each card in the ng-repeat
     let userBoards = function () {
         $scope.boardArray = [];
-        DataFactory.getUserBoards($scope.tempUID)
+        DataFactory.getUserBoards($scope.name)
         .then((boardObj)=>{
             Object.keys(boardObj).forEach( (key)=>{
                 boardObj[key].id = key;
@@ -50,7 +73,7 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
             });
         });
     };
-
+//    userUidCall();
     userBoards();
 
 });

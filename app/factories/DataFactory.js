@@ -2,7 +2,7 @@
 
 app.factory("DataFactory", function($q, $http, $window, FBCreds){
 
-
+let currentUserName = "";
 
 const getAllPins = function(){
     let pins = [];
@@ -146,6 +146,22 @@ const deleteBoard = function(boardId){
     });
 };
 
+const getUserName = function(userUID) {
+    return $q ((resolve, reject) => {
+        $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userUID}"`)
+        .then((userName) => {
+            for (let names in userName.data) {
+               console.log("user name", userName.data[names].firstName);
+                currentUserName = userName.data[names].firstName;
+            }
+            resolve(currentUserName);
+        })
+        .catch((error) =>{
+            reject(error);
+        });
+    });
+};
+
 
 
 return{
@@ -157,7 +173,8 @@ return{
     deletePin,
     getUserBoards,
     addBoard,
-    deleteBoard
+    deleteBoard,
+    getUserName
 };
 
 });
