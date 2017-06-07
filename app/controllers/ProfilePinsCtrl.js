@@ -40,4 +40,18 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
     };
     userPins();
 
+    let userBoards = function () {
+        $scope.boardArray = [];
+        DataFactory.getUserBoards(user)
+        .then((boardObj)=>{
+            console.log("boardObj", boardObj);
+            Object.keys(boardObj).forEach( (key)=>{
+                boardObj[key].id = key;
+                $scope.boardArray.push(boardObj[key]);
+            });
+        });
+    };
+
+    userBoards();
+
 });
