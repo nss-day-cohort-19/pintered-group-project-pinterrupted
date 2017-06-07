@@ -76,6 +76,7 @@ const addPin = function(newPin){
 
 const deletePin = function(pinId){
     return $q((resolve, reject)=>{
+        console.log("give me my Pin ID: ", pinId);
         $http.delete(`${FBCreds.databaseURL}/pins/${pinId}.json`)
         .then((firebaseResponse)=>{
             resolve(firebaseResponse);

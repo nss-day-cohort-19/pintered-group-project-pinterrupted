@@ -38,9 +38,10 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
 
 
 //     delete button calls this function from board-detail.html
-    $scope.deleteCurrentBoard = function (pinKey) {
-        console.log("delete Pin was clicked");
+    $scope.deleteCurrentPin = function (pinKey) {
+        console.log("delete Pin was clicked", pinKey);
        DataFactory.deletePin(pinKey)
+
 
        .then( (deleteComplete) => {
            $route.reload();
@@ -53,10 +54,11 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
         $scope.pinArray = [];
         DataFactory.getUserPins(user)
         .then((PinObj)=>{
-            console.log("user pins: ", PinObj);
+//            console.log("user pins: ", PinObj);
             Object.keys(PinObj).forEach( (key)=>{
                 PinObj[key].id = key;
                 $scope.pinArray.push(PinObj[key]);
+                console.log("what is pin key: ", $scope.pinArray);
             });
         });
     };
