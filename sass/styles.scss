@@ -55,3 +55,23 @@ input[type=text]:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 red;
   color: #464646 !important;
 }
+
+.mainContent {
+  margin-top: 20px;
+}
+
+.addPinImg {
+  height: 311px;
+}
+
+.addPinIcon {
+  position: absolute !important;
+  right: 150px !important;
+  bottom: 145px !important;
+}
+
+.buttonColor {
+    background-color: #26a69a;
+    margin-right: 5px !important;
+    color: white;
+}
