@@ -3,12 +3,14 @@
 
 app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $route, DataFactory, AuthFactory){
 
-
-    // should return UID to pass into both function on the page
-    // use scope.name in getUser function so it will display user name in mininav.html that is
-    // ng-included
     let user = AuthFactory.getUser();
-//    console.log("Is there a current user?", user);
+    $scope.name = AuthFactory.getUser();
+
+
+//    console.log("test name", DataFactory.getUserName($scope.name));
+    let firstNameUser = DataFactory.getUserName($scope.name);
+
+console.log("testing name on Board Control", firstNameUser);
 
 
     $scope.newBoardObject = {};
@@ -47,7 +49,7 @@ app.controller("BoardDetailCtrl", function($q, $window, $location, $scope, $rout
             });
         });
     };
-
+//    userUidCall();
     userBoards();
 
 });

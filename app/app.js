@@ -32,11 +32,17 @@ app.config(function($routeProvider){
     })
     .when("/boards", {
         templateUrl: "partials/board-detail.html",
-        controller: "BoardDetailCtrl"
+        controller: "BoardDetailCtrl",
+        resolve: {isAuth}
     })
     .when("/boards/:userId", {
         templateUrl: "partials/profile-boards.html",
         controller: "ProfileBoardsCtrl"
+    })
+    .when("/userPins" ,{
+        templateUrl: "partials/profile-pins.html",
+        controller: "ProfilePinCtrl",
+        resolve: {isAuth}
     })
     .otherwise('/');
 });

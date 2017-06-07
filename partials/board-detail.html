@@ -18,9 +18,9 @@
       <div class="card">
         <div class="card-image">
           <img src="images/grey-background.jpg" class="addPinImg">
-          <span class="card-title">Add Pin</span>
+          <span class="card-title">Add Board</span>
           <!-- Add Pin Modal Trigger -->
-          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target="addBoardModal" modal>library_add</i></a>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="col xs m4" ng-repeat="board in boardArray">
         <div class="card">
             <div class="card-image">
-                <a ng-href="#!/boards/abcd"><img src="../images/sample-1.jpg"></a>
+                <a ng-href="#!/boards/{{board.id}}"><img src="../images/sample-1.jpg"></a>
                 <span class="card-title"></span>
                 <a class="btn-floating halfway-fab waves-effect waves-light red" data-target="add--{{board.id}}" modal><i class="material-icons">delete</i></a>
             </div>
@@ -69,7 +69,27 @@
     </div>
 </div>
 
-
-
+  <div id="addPinModal" class="modal">
+    <div class="modal-content">
+      <h4>Add a Pin</h4>
+      <input type="text" placeholder="Image Link">
+      <input type="text" placeholder="Title For Pin">
+      <input type="text" placeholder="Description For This Pin">
+      <h4>Choose An Exisiting Board</h4>
+      <div class="center">
+        <div input-field>
+              <select class="browser-default" material-select watch>
+                  <option ng-repeat="board in boardArray">{{board.title}}</option>
+              </select>
+      </div>
+        <p>OR</p>
+      <input type="text" placeholder="Create New Board">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a class="btn waves-effect red" >Add Pin</a>
+    </div>
+  </div>
 
 

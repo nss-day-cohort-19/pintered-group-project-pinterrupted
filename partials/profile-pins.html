@@ -6,3 +6,71 @@
 <!-- MODAL -->
 
 <!-- clickable image with delete button-->
+<div ng-include="'partials/mininav.html'"></div>
+
+  <div class="row">
+    <div class="col xs m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/grey-background.jpg" class="addPinImg">
+          <span class="card-title">Add Pin</span>
+          <!-- Add Pin Modal Trigger -->
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col xs m4" ng-repeat="pins in pinArray">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{pins.url}}">
+          <span class="card-title">{{pins.title}}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='pin--{{pin.board_id}}' modal>delete</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{pins.description}}</p>
+        </div>
+      </div>
+
+
+                      <!--Delete Current Board Modal-->
+        <div id="pin--{{pin.board_id}}" class="modal">
+            <div class="modal-content">
+                <h4>Delete This Pin?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#!/userPins" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentBoard(pins.id)">Delete</a>
+                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+  </div>
+  <!-- Add Pin Modal Structure -->
+  <!-- Add Pin Modal Structure -->
+  <div id="addPinModal" class="modal">
+    <div class="modal-content">
+      <h4>Add a Pin</h4>
+      <input type="text" ng-model="newPinObject.url" placeholder="Image Link">
+      <input type="text" ng-model="newPinObject.title" placeholder="Title For Pin">
+      <input type="text" ng-model="newPinObject.description" placeholder="Description For Pin">
+      <h5>Choose Exisiting Board</h5>
+      <div>
+        <div input-field>
+              <select class="browser-default" material-select watch ng-model="boardArray.id">
+                  <option ng-repeat="board in boardArray">{{board.title}}</option>
+              </select>
+      </div>
+        <p>OR</p>
+      <h5>Create New Board:</h5>
+      <input type="text" placeholder="Board Name">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="#!/explore" class="btn waves-effect red" ng-click="addNewPin()">Add Pin</a>
+    </div>
+  </div>

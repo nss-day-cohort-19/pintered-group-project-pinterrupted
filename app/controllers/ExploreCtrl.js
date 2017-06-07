@@ -5,12 +5,28 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
     let user = AuthFactory.getUser();
 
     $scope.newBoardObject = {};
+    $scope.newPinObject = {
+        url: "",
+        title: "",
+        description: "",
+        uid: user
+    };
 
-    DataFactory.getAllPins()
-        .then( (allPins) => {
-            console.log("allPins", allPins);
-            $scope.allPins = allPins;
+    $scope.addNewPin = () => {
+        $scope.boardArray.forEach( (element) => {
+            if (element.title === $scope.boardArray.id) {
+                $scope.newPinObject.board_id = element.id;
+            }
         });
+        console.log("newPinObject", $scope.newPinObject);
+        DataFactory.addPin($scope.newPinObject)
+        .then( (addedPin) => {
+            console.log("addedPin", addedPin);
+            $scope.addedPin = addedPin;
+            $("#addPinModal").modal('close');
+            $route.reload();
+        });
+    };
 
         // pass into function input value from board-detail.html, push to boards collection in firebase and creates new custom key
     $scope.addNew = function (someText) {
@@ -30,11 +46,11 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
         $scope.boardArray = [];
         DataFactory.getUserBoards(user)
         .then((boardObj)=>{
-            console.log("boardObj", boardObj);
             Object.keys(boardObj).forEach( (key)=>{
                 boardObj[key].id = key;
                 $scope.boardArray.push(boardObj[key]);
             });
+            console.log("boardArray", $scope.boardArray);
         });
     };
 
