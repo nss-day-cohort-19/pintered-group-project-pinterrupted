@@ -4,7 +4,15 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route)
 
     let user = AuthFactory.getUser();
 
+    $scope.getPins = () => {
+        DataFactory.getAllPins()
+        .then((response) => {
+            console.log("response", response);
+            $scope.allPins = response;
+        });
+    };
 
+    $scope.getPins();
 
 
     $scope.newBoardObject = {};

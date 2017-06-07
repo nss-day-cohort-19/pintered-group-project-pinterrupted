@@ -15,7 +15,7 @@
           <img src="images/grey-background.jpg" class="addPinImg">
           <span class="card-title">Add Pin</span>
           <!-- Add Pin Modal Trigger -->
-          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
+          <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addProPinModal' modal>library_add</i></a>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
   </div>
   <!-- Add Pin Modal Structure -->
   <!-- Add Pin Modal Structure -->
-  <div id="addPinModal" class="modal">
+  <div id="addProPinModal" class="modal">
     <div class="modal-content">
       <h4>Add a Pin</h4>
       <input type="text" ng-model="newPinObject.url" placeholder="Image Link">
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!/explore" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-      <a href="#!/explore" class="btn waves-effect red" ng-click="addNewPin()">Add Pin</a>
+      <a href="#!/userPins" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      <a href="#!/userPins" class="btn waves-effect red" ng-click="addNewPin()">Add Pin</a>
     </div>
   </div>
