@@ -53,16 +53,16 @@ input[type=text]:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 red;
 }
 
-.buttonStyling {
-    position: absolute;
-    right: 24px;
-    bottom: 200px;
-}
-
 .mainContent {
   margin-top: 20px;
 }
 
-// nav {
-//   line-height: 0;
-// }
+.addPinImg {
+  height: 311px;
+}
+
+.addPinIcon {
+  position: absolute !important;
+  right: 150px !important;
+  bottom: 145px !important;
+}
