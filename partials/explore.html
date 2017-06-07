@@ -71,14 +71,16 @@
       <input type="text" placeholder="Link">
       <input type="text" placeholder="Title">
       <input type="text" placeholder="Describe this pin">
-      <div class="center">
+      <h5>Choose Existing Board:</h5>
+      <div>
         <div input-field>
               <select class="browser-default" material-select watch>
                   <option ng-repeat="board in boardArray">{{board.title}}</option>
               </select>
       </div>
         <p>OR</p>
-      <input type="text" placeholder="Create New Board">
+      <h5>Create New Board:</h5>
+      <input type="text" placeholder="Board Name">
       </div>
     </div>
     <div class="modal-footer">
