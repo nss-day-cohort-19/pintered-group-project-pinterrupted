@@ -1,6 +1,6 @@
 "use strict";
 
-app.factory("DataFactory", function($q, $http, FBCreds){
+app.factory("DataFactory", function($q, $http, $window, FBCreds){
 
 
 
@@ -89,6 +89,20 @@ const addBoard = function(newBoard){
     });
 };
 
+const deleteBoard = function (boardKey) {
+    return $q( (resolve, reject) => {
+        $http.delete(`${FBCreds.databaseURL}/boards/${boardKey}.json`)
+        .then( (response) =>{
+            console.log("delete  board success");
+            $window.location.href="#!/boards";
+            resolve(response);
+        })
+        .catch( (error) => {
+            reject(error);
+        });
+    });
+};
+
 
 
 return{
@@ -97,7 +111,8 @@ return{
     getUserPins,
     getUserBoards,
     addPin,
-    addBoard
+    addBoard,
+    deleteBoard
 };
 
 });

@@ -44,10 +44,10 @@
                 <!--Delete Current Board Modal-->
         <div id="add--{{board.id}}" class="modal">
             <div class="modal-content">
-                <h4>Create New Board</h4>
+                <h4>Delete This Board?</h4>
             </div>
             <div class="modal-footer">
-                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteBoard()">Delete</a>
+                <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentBoard(board.id)">Delete</a>
                 <a href="#!/boards" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
             </div>
         </div>
@@ -62,6 +62,7 @@
 <div id="addBoardModal" class="modal">
     <div class="modal-content">
         <h4>Create New Board</h4>
+        <label>Title:</label>
         <input type="text" ng-model="addBoard">
     </div>
     <div class="modal-footer">
