@@ -171,7 +171,8 @@ return{
     getUserBoards,
     addBoard,
     deleteBoard,
-    getBoardPins
+    getBoardPins,
+    getAllBoards
 };
 
 });
