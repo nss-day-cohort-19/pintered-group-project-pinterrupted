@@ -13,7 +13,7 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     };
 
     $scope.selectedBoard = {
-        board : ""
+        board: ""
     };
 
 
