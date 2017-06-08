@@ -23,31 +23,40 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
         uid: user
     };
 
-    $scope.addNewPin = () => {
-        $scope.boardArray.forEach( (element) => {
-            if (element.title === $scope.boardArray.id) {
-                $scope.newPinObject.board_id = element.id;
-            }
-        });
-        console.log("newPinObject", $scope.newPinObject);
-        DataFactory.addPin($scope.newPinObject)
-        .then( (addedPin) => {
-            console.log("addedPin", addedPin);
-            $scope.addedPin = addedPin;
-            $("#addPinModal").modal('close');
-            $route.reload();
-        });
-    };
+     $scope.addNewBoard = function () {
 
-        // pass into function input value from board-detail.html, push to boards collection in firebase and creates new custom key
-    $scope.addNew = function (someText) {
-        $scope.newBoardObject.title = someText;
-        $scope.newBoardObject.uid = user;
-        DataFactory.addBoard($scope.newBoardObject)
-        .then((newBoardSucces)=>{
-            $("#addBoardModal").modal('close');
-            $route.reload();
-        });
+        let selectValue = angular.element('#select-id').val();
+        console.log("what is current select", selectValue);
+        //had to check for empty strings because it allowed used to create a board without writing or selecting a title
+        if (selectValue !== "" || $scope.newPinObject.title !== "") {
+            // if option selected then do this IF Statement
+            if (selectValue !== "") {
+                $scope.newPinObject.board_id = selectValue;
+                DataFactory.addPin($scope.newPinObject)
+                .then((resolved) =>{
+                    $("#exploreModal").modal('close');
+                    console.log("Pin added to selected board", selectValue);
+                    $route.reload();
+                });
+            // if create new board then do the ELSE Statement
+            }else {
+                $scope.newBoardObject.title = $scope.newPinObject.board_name;
+                $scope.newBoardObject.uid = user;
+                DataFactory.addBoard($scope.newBoardObject)
+                .then((newBoardSucces)=>{
+                    console.log("addNewBoard(): " + newBoardSucces.name);
+                    $scope.newPinObject.board_id = newBoardSucces.name;
+                    return DataFactory.addPin($scope.newPinObject);
+                })
+                .then( (addedPin) => {
+                    console.log("addedPin", addedPin);
+        //            $scope.addedPin = addedPin;
+                    $("#exploreModal").modal('close');
+                    $route.reload();
+
+                });
+            }
+        }
     };
 
     // sending userboards uid to get back board title and pass into board-detail.html
