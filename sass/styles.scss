@@ -77,12 +77,14 @@ input[type=text]:focus:not([readonly]) {
 }
 
 .explore-cards{
-  column-count: 3;
+  column-count: 4;
+  margin: 5px 10px;
 }
 
 .card{
     -webkit-column-break-inside: avoid;
 }
+
 
 
 .card .card-image .card-title {
