@@ -14,7 +14,6 @@ let getBoardPins = function(){
     $scope.boardPins = [];
     DataFactory.getBoardPins($routeParams.userId)
     .then((response)=>{
-        console.log("line 46 ", response);
         Object.keys(response).forEach( (key) => {
             response[key].id = key;
             $scope.boardPins.push(response[key]);

@@ -10,7 +10,6 @@ const getAllPins = function(){
         $http.get(`${FBCreds.databaseURL}/pins.json`)
         .then((pinsObj)=>{
         let pinsCollection = pinsObj.data;
-          console.log("pinsCollection from firebase", pinsCollection);
           Object.keys(pinsCollection).forEach((key)=>{
             pinsCollection[key].id = key;
             pins.push(pinsCollection[key]);
@@ -27,7 +26,7 @@ const getUserPins = function(userId){
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="uid"&equalTo="${userId}"`)
         .then((userPinsObj)=>{
-            console.log(`Pins for ${userId}`, userPinsObj.data);
+//            console.log(`Pins for ${userId}`, userPinsObj.data);
             resolve(userPinsObj.data);
         })
         .catch((error)=>{
@@ -40,7 +39,7 @@ const getBoardPins = function(boardId){
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
         .then((userPinsObj)=>{
-            console.log(`Pins for ${boardId}`, userPinsObj.data);
+//            console.log(`Pins for ${boardId}`, userPinsObj.data);
             resolve(userPinsObj.data);
         })
         .catch((error)=>{
@@ -65,7 +64,7 @@ const addPin = function(newPin){
     return $q((resolve, reject)=>{
         $http.post(`${FBCreds.databaseURL}/pins.json`, newPin)
         .then((newPinResponse)=>{
-            console.log("Response From Posting New Pin", newPinResponse.data);
+//            console.log("Response From Posting New Pin", newPinResponse.data);
             resolve(newPinResponse.data);
         })
         .catch((error)=>{
@@ -76,7 +75,7 @@ const addPin = function(newPin){
 
 const deletePin = function(pinId){
     return $q((resolve, reject)=>{
-        console.log("give me my Pin ID: ", pinId);
+//        console.log("give me my Pin ID: ", pinId);
         $http.delete(`${FBCreds.databaseURL}/pins/${pinId}.json`)
         .then((firebaseResponse)=>{
             resolve(firebaseResponse);
@@ -95,7 +94,7 @@ const getAllBoards = function(){
         $http.get(`${FBCreds.databaseURL}/boards.json`)
         .then((boardsObj)=>{
         let boardsCollection = boardsObj.data;
-          console.log("boardsCollection from firebase", boardsCollection);
+//          console.log("boardsCollection from firebase", boardsCollection);
           Object.keys(boardsCollection).forEach((key)=>{
             boardsCollection[key].id = key;
             boards.push(boardsCollection[key]);
@@ -112,7 +111,7 @@ const getUserBoards = function(userId){
     return $q((resolve, reject)=>{
         $http.get(`${FBCreds.databaseURL}/boards.json?orderBy="uid"&equalTo="${userId}"`)
         .then((userBoardsObj)=>{
-            console.log(`Boards for ${userId}`, userBoardsObj.data);
+//            console.log(`Boards for ${userId}`, userBoardsObj.data);
             resolve(userBoardsObj.data);
         })
         .catch((error)=>{
@@ -164,9 +163,9 @@ const getUserName = function(userUID) {
     return $q ((resolve, reject) => {
         $http.get(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userUID}"`)
         .then((userName) => {
-            console.log("What is user name", userName);
+//            console.log("What is user name", userName);
             for (let names in userName.data) {
-               console.log("user name", userName.data[names].firstName);
+//               console.log("user name", userName.data[names].firstName);
                 currentUserName = userName.data[names].firstName;
             }
             resolve(currentUserName);
