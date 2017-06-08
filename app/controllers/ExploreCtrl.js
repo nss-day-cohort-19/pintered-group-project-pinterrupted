@@ -1,8 +1,47 @@
 "use strict";
 
 app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route, SearchTermData) {
+
+
     $scope.searchText = SearchTermData;
     let user = AuthFactory.getUser();
+
+    $scope.busy = true;
+    $scope.allData = [];
+    $scope.allPins = [];
+    var page = 0;
+    var step = 6;
+
+
+    $scope.getPins = () => {
+        DataFactory.getAllPins()
+        .then((response) => {
+            console.log("response", response);
+            // $scope.allPins = response;
+            $scope.allData = response;
+            $scope.nextPage();
+            $scope.busy = false;
+        });
+    };
+
+    $scope.nextPage = function(){
+        var pinLength = $scope.allPins.length;
+        if($scope.busy){
+            return;
+        }
+        $scope.busy = true;
+        $scope.allPins = $scope.allPins.concat($scope.allData.splice(page * step, step));
+        page++;
+        $scope.busy = false;
+        console.log("allPins Array", $scope.allPins);
+        if($scope.allPins.length === 0){
+            $scope.noMoreData = true;
+        }
+    };
+
+
+    $scope.getPins();
+
 
     $scope.newBoardObject = {};
     $scope.newPinObject = {
@@ -17,12 +56,12 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     };
 
 
-    $scope.getPins = () => {
-        DataFactory.getAllPins()
-        .then((response) =>{
-            $scope.allPins = response;
-        });
-    };
+    // $scope.getPins = () => {
+    //     DataFactory.getAllPins()
+    //     .then((response) =>{
+    //         $scope.allPins = response;
+    //     });
+    // };
 
     $scope.getPins();
 

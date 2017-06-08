@@ -1,7 +1,8 @@
 <!--add a pin button  -->
 <!-- clickable add to board button -->
-<div class="explore-cards">
-    <div class="card">
+
+  <div class="explore-cards" infinite-scroll="nextPage()" infinite-scroll-disabled="busy || noMoreData" infinite-scroll-distance="2">
+      <div class="card">
         <div class="card-image">
             <img src="images/grey-background.jpg" class="addPinImg">
             <span class="card-title">Add Pin</span>
@@ -20,6 +21,17 @@
                 <p>{{pins.description}}</p>
             </div>
         </div>
+
+        <div class="card-content">
+          <p>{{pins.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show="busy">Loading...</div>
+<!-- Modals -->
+
 
 
         <div id="pin--{{pins.id}}" class="modal">
