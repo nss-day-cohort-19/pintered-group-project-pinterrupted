@@ -6,6 +6,24 @@
     color: #464646 !important;
 }
 
+.flex-me {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mininav-img-div {
+    width: 40%;
+    display: inline-block;
+
+}
+
+.profile-img {
+    width: 20% !important;
+    height: 20% !important;
+    margin-right: 20% !important;
+    padding-top: 10px !important;
+
+}
 
 .pinterest-logo {
     margin-top: 5px;
@@ -27,6 +45,8 @@
 
 .user-name {
     padding: 1em;
+    width: 50%;
+    display: inline-block;
 }
 
 .mini-nav-buttons {
@@ -75,6 +95,15 @@ input[type=text]:focus:not([readonly]) {
     margin-right: 5px !important;
     color: white;
 }
+
+.explore-cards{
+  column-count: 3;
+}
+
+.card{
+    -webkit-column-break-inside: avoid;
+}
+
 
 .card .card-image .card-title {
   color: black !important;

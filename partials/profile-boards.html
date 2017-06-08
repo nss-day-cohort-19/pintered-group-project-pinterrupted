@@ -1,47 +1,36 @@
-<!--ability to delete board -->
-<!-- list of currently created boards -->
-<!-- clickable board takes you to board detail view -->
-
-
+<div ng-include="'partials/mininav.html'"></div>
 
 <div class="row">
     <h3> {{board.title}}</h3>
 
 </div>
 
-
 <div class="row">
+
+<!--    display pins-->
   <div class="col xs m4" ng-repeat="pins in boardPins">
     <div class="card">
       <div class="card-image">
         <img src="{{pins.url}}">
         <span class="card-title">{{pins.title}}</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">playlist_add</i></a>
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target="pin--{{pins.id}}" modal>delete</i></a>
       </div>
       <div class="card-content">
         <p>{{pins.description}}</p>
       </div>
     </div>
+
+<!--   delete pins-->
+    <div id="pin--{{pins.id}}" class="modal">
+        <div class="modal-content">
+            <h4>Delete This Pin?</h4>
+        </div>
+        <div class="modal-footer">
+            <a href="#!/boards/{{currentBoard}}" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="deleteCurrentPin(pins.id)">Delete</a>
+            <a href="#!/boards/{{currentBoard}}" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+        </div>
+    </div>
+
   </div>
 </div>
 
-
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-<div class="modal-content">
-  <h4>Modal Header</h4>
-  <p>A bunch of text</p>
-</div>
-<div class="modal-footer">
-  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-</div>
-</div>
-
-
-
-
-<!-- MODALS -->
-
-<!-- create boards -->
-<!-- are you sure delete button -->

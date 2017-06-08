@@ -14,6 +14,7 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
 
     $scope.getPins();
 
+
     $scope.newBoardObject = {};
     $scope.newPinObject = {
         url: "",
@@ -65,6 +66,7 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     };
 
     userBoards();
+
 
 
 // getPins()
