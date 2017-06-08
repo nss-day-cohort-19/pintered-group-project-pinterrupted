@@ -1,8 +1,7 @@
 <!--add a pin button  -->
 <!-- clickable add to board button -->
 
-  <div class="row">
-    <div class="col xs m4">
+  <div class="explore-cards">
       <div class="card">
         <div class="card-image">
           <img src="images/grey-background.jpg" class="addPinImg">
@@ -11,8 +10,7 @@
           <a class="addPinIcon btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons" data-target='addPinModal' modal>library_add</i></a>
         </div>
       </div>
-    </div>
-    <div class="col xs m4" ng-repeat="pins in allPins | filter: searchText.search">
+    <div ng-repeat="pins in allPins | filter: searchText.search">
       <div class="card">
         <div class="card-image">
           <img src="{{pins.url}}">

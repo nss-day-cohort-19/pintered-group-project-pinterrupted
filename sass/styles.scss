@@ -76,6 +76,10 @@ input[type=text]:focus:not([readonly]) {
     color: white;
 }
 
+.explore-cards{
+  column-count: 3;
+}
+
 .card .card-image .card-title {
   color: black !important;
   position: relative;
