@@ -7,12 +7,53 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     $scope.getPins = () => {
         DataFactory.getAllPins()
         .then((response) => {
-            console.log("response", response);
             $scope.allPins = response;
         });
     };
 
     $scope.getPins();
+
+    $scope.addToBoard = (pinsId) => {
+        $scope.boardsArray = [];
+        DataFactory.getSinglePin(pinsId)
+        .then( (pinObject) => {
+            console.log("pinObject", pinObject);
+            pinObject.uid = user;
+            DataFactory.getUserBoards(user)
+            .then((boards)=>{
+                Object.keys(boards).forEach( (key)=>{
+                    boards[key].id = key;
+                    $scope.boardsArray.push(boards[key]);
+                });
+                console.log("boardsArray", $scope.boardsArray);
+                let selectValue = angular.element('#selected-id').val();
+                console.log("selectValue", selectValue);
+                if (selectValue !== "" || $scope.newPinObject.title !== "") {
+                    $scope.boardsArray.forEach(function(element){
+                        if (element.title === selectValue) {
+                            pinObject.board_id = element.id;
+                            console.log("element.id", element.id);
+                        } else {
+                        $scope.newBoardObject.title = $scope.newPinObject.board_name;
+                        $scope.newBoardObject.uid = user;
+                        }
+                    });
+                    console.log("newBoardObject", $scope.newBoardObject);
+                    DataFactory.addBoard($scope.newBoardObject)
+                    .then((newBoardSucces)=>{
+                        console.log("addNewBoard(): " + newBoardSucces.name);
+                            pinObject.board_id = newBoardSucces.name;
+                            return DataFactory.addPin(pinObject);
+                        });
+                    console.log("test");
+                    // DataFactory.addPin(pinObject);
+                    $(`#pin--${pinsId}`).modal('close');
+                        $route.reload();
+
+                }
+        });
+    });
+};
 
 
     $scope.newBoardObject = {};
