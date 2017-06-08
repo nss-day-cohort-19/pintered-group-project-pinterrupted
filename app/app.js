@@ -3,7 +3,7 @@
 console.log("HOWDY");
 
 
-const app = angular.module("Pinterrupted", ["ngRoute", "ui.materialize"]);
+const app = angular.module("Pinterrupted", ["ngRoute", "ui.materialize","infinite-scroll"]);
 
 let isAuth = (AuthFactory) =>
   new Promise ((resolve, reject) => {
