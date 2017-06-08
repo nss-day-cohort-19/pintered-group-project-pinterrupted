@@ -36,19 +36,20 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
                         } else {
                         $scope.newBoardObject.title = $scope.newPinObject.board_name;
                         $scope.newBoardObject.uid = user;
-                        console.log("newBoardObject", $scope.newBoardObject);
-                    //     DataFactory.addBoard($scope.newBoardObject)
-                    //     .then((newBoardSucces)=>{
-                    //         console.log("addNewBoard(): " + newBoardSucces.name);
-                    //         pinObject.board_id = newBoardSucces.name;
-                    //         return DataFactory.addPin(pinObject);
-                    //     });
+                        }
+                    });
+                    console.log("newBoardObject", $scope.newBoardObject);
+                    DataFactory.addBoard($scope.newBoardObject)
+                    .then((newBoardSucces)=>{
+                        console.log("addNewBoard(): " + newBoardSucces.name);
+                            pinObject.board_id = newBoardSucces.name;
+                            return DataFactory.addPin(pinObject);
+                        });
                     console.log("test");
-                    }
                     // DataFactory.addPin(pinObject);
                     $(`#pin--${pinsId}`).modal('close');
                         $route.reload();
-                    });
+
                 }
         });
     });
