@@ -4,17 +4,6 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     $scope.searchText = SearchTermData;
     let user = AuthFactory.getUser();
 
-    $scope.getPins = () => {
-        DataFactory.getAllPins()
-        .then((response) => {
-            console.log("response", response);
-            $scope.allPins = response;
-        });
-    };
-
-    $scope.getPins();
-
-
     $scope.newBoardObject = {};
     $scope.newPinObject = {
         url: "",
@@ -22,6 +11,51 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
         description: "",
         uid: user
     };
+
+    $scope.selectedBoard = {
+        board : ""
+    };
+
+
+    $scope.getPins = () => {
+        DataFactory.getAllPins()
+        .then((response) =>{
+            $scope.allPins = response;
+        });
+    };
+
+    $scope.getPins();
+
+    $scope.addToBoard = (pinsId) => {
+         console.log("Selected Board", $scope.selectedBoard.board);
+        $scope.boardsArray = [];
+        DataFactory.getSinglePin(pinsId)
+        .then( (pinObject) => {
+            pinObject.uid = user;
+            if($scope.selectedBoard.board === ""){
+                let newBoardObj = {};
+                newBoardObj.title = $scope.newPinObject.board_name;
+                newBoardObj.uid = user;
+                DataFactory.addBoard(newBoardObj)
+                .then((response)=>{
+                    console.log("this is the response for adding a new board", response);
+                pinObject.board_id = response.name;
+                DataFactory.addPin(pinObject);
+                $(`#pin--${pinsId}`).modal('close');
+                 $route.reload();
+                });
+
+            }else{
+            pinObject.board_id = $scope.selectedBoard.board.id;
+            console.log("pinObject", pinObject);
+            DataFactory.addPin(pinObject);
+            $(`#pin--${pinsId}`).modal('close');
+            $route.reload();
+            }
+        });
+};
+
+
 
      $scope.addNewBoard = function () {
 
