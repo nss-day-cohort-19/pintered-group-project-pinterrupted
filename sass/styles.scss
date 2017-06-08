@@ -80,6 +80,11 @@ input[type=text]:focus:not([readonly]) {
   column-count: 3;
 }
 
+.card{
+    -webkit-column-break-inside: avoid;
+}
+
+
 .card .card-image .card-title {
   color: black !important;
   position: relative;
