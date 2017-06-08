@@ -4,55 +4,6 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
     $scope.searchText = SearchTermData;
     let user = AuthFactory.getUser();
 
-    $scope.getPins = () => {
-        DataFactory.getAllPins()
-        .then((response) => {
-            console.log("response", response);
-            $scope.allPins = response;
-        });
-    };
-
-    $scope.getPins();
-
-    $scope.addToBoard = (pinsId) => {
-        $scope.boardsArray = [];
-        DataFactory.getSinglePin(pinsId)
-        .then( (pinObject) => {
-            console.log("pinObject", pinObject);
-            pinObject.uid = user;
-            DataFactory.getUserBoards(user)
-            .then((boards)=>{
-                Object.keys(boards).forEach( (key)=>{
-                    boards[key].id = key;
-                    $scope.boardsArray.push(boards[key]);
-                });
-                console.log("boardsArray", $scope.boardsArray);
-                let selectValue = angular.element('#select-id').val();
-                if (selectValue !== "" || $scope.newPinObject.title !== "") {
-                    $scope.boardsArray.forEach(function(element){
-                        if (element.title === angular.element("#select-id").val()) {
-                            pinObject.board_id = element.id;
-                            console.log("element.id", element.id);
-                        } else {
-                        $scope.newBoardObject.title = $scope.newPinObject.board_name;
-                        $scope.newBoardObject.uid = user;
-                        DataFactory.addBoard($scope.newBoardObject)
-                        .then((newBoardSucces)=>{
-                            console.log("addNewBoard(): " + newBoardSucces.name);
-                            pinObject.board_id = newBoardSucces.name;
-                            return DataFactory.addPin(pinObject);
-                        });
-                    }
-                    DataFactory.addPin(pinObject);
-                    $(`#pin--${pinsId}`).modal('close');
-                        $route.reload();
-                    });
-                }
-        });
-    });
-};
-
-
     $scope.newBoardObject = {};
     $scope.newPinObject = {
         url: "",
@@ -60,6 +11,51 @@ app.controller('ExploreCtrl', function(DataFactory, $scope, AuthFactory, $route,
         description: "",
         uid: user
     };
+
+    $scope.selectedBoard = {
+        board : ""
+    };
+
+
+    $scope.getPins = () => {
+        DataFactory.getAllPins()
+        .then((response) =>{
+            $scope.allPins = response;
+        });
+    };
+
+    $scope.getPins();
+
+    $scope.addToBoard = (pinsId) => {
+         console.log("Selected Board", $scope.selectedBoard.board);
+        $scope.boardsArray = [];
+        DataFactory.getSinglePin(pinsId)
+        .then( (pinObject) => {
+            pinObject.uid = user;
+            if($scope.selectedBoard.board === ""){
+                let newBoardObj = {};
+                newBoardObj.title = $scope.newPinObject.board_name;
+                newBoardObj.uid = user;
+                DataFactory.addBoard(newBoardObj)
+                .then((response)=>{
+                    console.log("this is the response for adding a new board", response);
+                pinObject.board_id = response.name;
+                DataFactory.addPin(pinObject);
+                $(`#pin--${pinsId}`).modal('close');
+                 $route.reload();
+                });
+
+            }else{
+            pinObject.board_id = $scope.selectedBoard.board.id;
+            console.log("pinObject", pinObject);
+            DataFactory.addPin(pinObject);
+            $(`#pin--${pinsId}`).modal('close');
+            $route.reload();
+            }
+        });
+};
+
+
 
      $scope.addNewBoard = function () {
 
