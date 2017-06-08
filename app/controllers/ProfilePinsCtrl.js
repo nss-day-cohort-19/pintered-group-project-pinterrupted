@@ -40,7 +40,7 @@ app.controller("ProfilePinCtrl", function($q, $window, $location, $scope, $route
                 });
             // if create new board then do the ELSE Statement
             }else {
-                $scope.newBoardObject.title = $scope.newPinObject.title;
+                $scope.newBoardObject.title = $scope.newPinObject.board_name;
                 $scope.newBoardObject.uid = user;
                 DataFactory.addBoard($scope.newBoardObject)
                 .then((newBoardSucces)=>{
