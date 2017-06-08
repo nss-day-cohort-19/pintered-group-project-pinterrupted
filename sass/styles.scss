@@ -86,8 +86,8 @@ input[type=text]:focus:not([readonly]) {
 
 .addPinIcon {
   position: absolute !important;
-  right: 150px !important;
-  bottom: 145px !important;
+  right: 105px !important;
+  bottom: 165px !important;
 }
 
 .buttonColor {
@@ -97,7 +97,8 @@ input[type=text]:focus:not([readonly]) {
 }
 
 .explore-cards{
-  column-count: 3;
+  column-count: 4;
+  margin: 5px 10px;
 }
 
 .card{
