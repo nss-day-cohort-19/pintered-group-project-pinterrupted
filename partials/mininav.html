@@ -1,5 +1,8 @@
 <div ng-controller="MiniNavCtrl" class="mininav-container">
-    <h4 class="user-name">{{profileName}}'s Profile</h4>
+    <div class="flex-me">
+        <h4 class="user-name">{{profileName}}'s Profile</h4>
+        <img src="../images/puppy.jpg" alt="" class="circle responsive-img profile-img" value="left">
+    </div>
     <div class="mini-nav-buttons">
         <a class="button-background-color waves-effect waves-red btn-flat" ng-href="#!/boards">Boards</a>
         <a class="button-background-color waves-effect waves-red btn-flat" ng-href="#!/userPins">Pins</a>
